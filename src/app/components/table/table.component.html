@@ -1,0 +1,104 @@
+<mat-card class="header"><h4>Team Wave Assignment Table</h4></mat-card>
+
+<mat-card class="search__card">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. Mia"
+      #input
+    />
+  </mat-form-field>
+</mat-card>
+
+<div class="table__container">
+  <!-- <mat-card class="search__card">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+  </mat-card> -->
+
+  <div class="example-container mat-elevation-z8 spinner__container">
+    <div
+      class="example-loading-shade"
+      *ngIf="isLoadingResults || isRateLimitReached"
+    >
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <div
+        class="example-rate-limit-reached error__msg"
+        *ngIf="isRateLimitReached"
+      >
+        StackOverFlow's API rate limit has been reached. It will be reset in one
+        minute.
+      </div>
+    </div>
+
+    <div class="example-table-container">
+      <table
+        mat-table
+        [dataSource]="data"
+        class="example-table"
+        matSort
+        matSortActive="activity"
+        matSortDisableClear
+        matSortDirection="desc"
+      >
+        <!-- Score Column -->
+        <ng-container matColumnDef="score">
+          <th class="small__col" mat-header-cell *matHeaderCellDef>Score</th>
+          <td class="small__col" mat-cell *matCellDef="let row">
+            {{ row.score }}
+          </td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th
+            class="large__col"
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            disableClear
+          >
+            Title
+          </th>
+          <td class="large__col" mat-cell *matCellDef="let row">
+            {{ row.title }}
+          </td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="view_count">
+          <th class="small__col" mat-header-cell *matHeaderCellDef>Views</th>
+          <td class="small__col" mat-cell *matCellDef="let row">
+            {{ row.view_count }}
+          </td>
+        </ng-container>
+
+        <!-- Link Column -->
+        <ng-container matColumnDef="link">
+          <th class="large__col" mat-header-cell *matHeaderCellDef>Link</th>
+          <td class="large__col" mat-cell *matCellDef="let row">
+            {{ row.link }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [length]="resultsLength"
+      [pageSize]="30"
+      aria-label="Select page of GitHub search results"
+    ></mat-paginator>
+  </div>
+</div>

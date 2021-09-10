@@ -1,0 +1,54 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.header {
+  margin-top: 20px;
+  margin: 20px;
+  background-color: rgb(32, 32, 109);
+  color: white;
+  text-align: center;
+}
+
+.search__card {
+  margin: 30px;
+  margin-bottom: 5px;
+}
+
+.table__container {
+  padding: 30px;
+  padding-top: 0px;
+}
+
+.small__col {
+  width: 10%;
+  text-align: left;
+}
+
+.large__col {
+  text-align: left;
+}
+
+.spinner__container {
+  width: 100%;
+  text-align: center;
+}
+
+.error__msg {
+  color: red;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
